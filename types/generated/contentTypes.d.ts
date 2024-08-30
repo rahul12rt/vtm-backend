@@ -788,6 +788,36 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiAcademicYearAcademicYear extends Schema.CollectionType {
+  collectionName: 'academic_years';
+  info: {
+    singularName: 'academic-year';
+    pluralName: 'academic-years';
+    displayName: 'Academic Year';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    year: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::academic-year.academic-year',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::academic-year.academic-year',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiClassClass extends Schema.CollectionType {
   collectionName: 'classes';
   info: {
@@ -800,11 +830,6 @@ export interface ApiClassClass extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String;
-    test_results: Attribute.Relation<
-      'api::class.class',
-      'oneToMany',
-      'api::test-result.test-result'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -835,11 +860,6 @@ export interface ApiCollegeCollege extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String;
-    test_results: Attribute.Relation<
-      'api::college.college',
-      'oneToMany',
-      'api::test-result.test-result'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -864,17 +884,30 @@ export interface ApiStudentStudent extends Schema.CollectionType {
     singularName: 'student';
     pluralName: 'students';
     displayName: 'Student';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     name: Attribute.String;
-    test_results: Attribute.Relation<
+    roll_number: Attribute.String;
+    email: Attribute.String;
+    user_name: Attribute.String;
+    password: Attribute.Password;
+    college: Attribute.Relation<
       'api::student.student',
-      'oneToMany',
-      'api::test-result.test-result'
+      'oneToOne',
+      'api::college.college'
     >;
+    class: Attribute.Relation<
+      'api::student.student',
+      'oneToOne',
+      'api::class.class'
+    >;
+    academic_year: Attribute.String;
+    contact_number: Attribute.String;
+    secoundary_number: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -905,11 +938,6 @@ export interface ApiSubjectSubject extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String;
-    test_results: Attribute.Relation<
-      'api::subject.subject',
-      'oneToMany',
-      'api::test-result.test-result'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -940,11 +968,6 @@ export interface ApiTestTest extends Schema.CollectionType {
   };
   attributes: {
     date: Attribute.Date;
-    test_results: Attribute.Relation<
-      'api::test.test',
-      'oneToMany',
-      'api::test-result.test-result'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -967,37 +990,38 @@ export interface ApiTestResultTestResult extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
+    obtained: Attribute.BigInteger;
+    rank: Attribute.BigInteger;
+    total_marks: Attribute.Integer;
     class: Attribute.Relation<
       'api::test-result.test-result',
-      'manyToOne',
+      'oneToOne',
       'api::class.class'
+    >;
+    student: Attribute.Relation<
+      'api::test-result.test-result',
+      'oneToOne',
+      'api::student.student'
     >;
     subject: Attribute.Relation<
       'api::test-result.test-result',
-      'manyToOne',
+      'oneToOne',
       'api::subject.subject'
+    >;
+    test: Attribute.Relation<
+      'api::test-result.test-result',
+      'oneToOne',
+      'api::test.test'
     >;
     topic: Attribute.Relation<
       'api::test-result.test-result',
-      'manyToOne',
+      'oneToOne',
       'api::topic.topic'
     >;
     college: Attribute.Relation<
       'api::test-result.test-result',
-      'manyToOne',
+      'oneToOne',
       'api::college.college'
-    >;
-    test: Attribute.Relation<
-      'api::test-result.test-result',
-      'manyToOne',
-      'api::test.test'
-    >;
-    obtained: Attribute.BigInteger;
-    rank: Attribute.BigInteger;
-    student: Attribute.Relation<
-      'api::test-result.test-result',
-      'manyToOne',
-      'api::student.student'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1029,11 +1053,6 @@ export interface ApiTopicTopic extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String;
-    test_results: Attribute.Relation<
-      'api::topic.topic',
-      'oneToMany',
-      'api::test-result.test-result'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1070,6 +1089,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::academic-year.academic-year': ApiAcademicYearAcademicYear;
       'api::class.class': ApiClassClass;
       'api::college.college': ApiCollegeCollege;
       'api::student.student': ApiStudentStudent;

@@ -13,12 +13,6 @@
   "attributes": {
     "date": {
       "type": "date"
-    },
-    "test_results": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::test-result.test-result",
-      "mappedBy": "test"
     }
   }
 }

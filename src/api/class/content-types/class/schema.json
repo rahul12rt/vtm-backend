@@ -13,12 +13,6 @@
   "attributes": {
     "name": {
       "type": "string"
-    },
-    "test_results": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::test-result.test-result",
-      "mappedBy": "class"
     }
   }
 }

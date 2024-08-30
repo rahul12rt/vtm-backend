@@ -4,7 +4,8 @@
   "info": {
     "singularName": "student",
     "pluralName": "students",
-    "displayName": "Student"
+    "displayName": "Student",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -14,11 +15,36 @@
     "name": {
       "type": "string"
     },
-    "test_results": {
+    "roll_number": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "user_name": {
+      "type": "string"
+    },
+    "password": {
+      "type": "password"
+    },
+    "college": {
       "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::test-result.test-result",
-      "mappedBy": "student"
+      "relation": "oneToOne",
+      "target": "api::college.college"
+    },
+    "class": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::class.class"
+    },
+    "academic_year": {
+      "type": "string"
+    },
+    "contact_number": {
+      "type": "string"
+    },
+    "secoundary_number": {
+      "type": "string"
     }
   }
 }

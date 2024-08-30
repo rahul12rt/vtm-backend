@@ -12,47 +12,44 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "class": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::class.class",
-      "inversedBy": "test_results"
-    },
-    "subject": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::subject.subject",
-      "inversedBy": "test_results"
-    },
-    "topic": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::topic.topic",
-      "inversedBy": "test_results"
-    },
-    "college": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::college.college",
-      "inversedBy": "test_results"
-    },
-    "test": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::test.test",
-      "inversedBy": "test_results"
-    },
     "obtained": {
       "type": "biginteger"
     },
     "rank": {
       "type": "biginteger"
     },
+    "total_marks": {
+      "type": "integer"
+    },
+    "class": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::class.class"
+    },
     "student": {
       "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::student.student",
-      "inversedBy": "test_results"
+      "relation": "oneToOne",
+      "target": "api::student.student"
+    },
+    "subject": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::subject.subject"
+    },
+    "test": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::test.test"
+    },
+    "topic": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::topic.topic"
+    },
+    "college": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::college.college"
     }
   }
 }
