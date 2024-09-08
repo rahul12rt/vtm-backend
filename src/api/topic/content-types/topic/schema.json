@@ -4,7 +4,8 @@
   "info": {
     "singularName": "topic",
     "pluralName": "topics",
-    "displayName": "Topic"
+    "displayName": "Topic",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -12,7 +13,37 @@
   "pluginOptions": {},
   "attributes": {
     "name": {
-      "type": "string"
+      "type": "string",
+      "unique": true
+    },
+    "chapter": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::chapter.chapter"
+    },
+    "self_studies": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::self-study.self-study",
+      "mappedBy": "topics"
+    },
+    "creat_dpps": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::creat-dpp.creat-dpp",
+      "mappedBy": "topics"
+    },
+    "question_banks": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::question-bank.question-bank",
+      "mappedBy": "topics"
+    },
+    "create_tests": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::create-test.create-test",
+      "mappedBy": "topics"
     }
   }
 }

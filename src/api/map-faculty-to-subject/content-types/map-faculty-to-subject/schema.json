@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "map_faculty_to_subjects",
+  "info": {
+    "singularName": "map-faculty-to-subject",
+    "pluralName": "map-faculty-to-subjects",
+    "displayName": "Map Faculty To Subject",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "faculty": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::faculty.faculty"
+    },
+    "subjects": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::subject.subject",
+      "inversedBy": "map_faculty_to_subjects"
+    }
+  }
+}

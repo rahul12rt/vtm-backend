@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "assing_self_study_to_colleges",
+  "info": {
+    "singularName": "assing-self-study-to-college",
+    "pluralName": "assing-self-study-to-colleges",
+    "displayName": "Assing Self study to College",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "self_studies": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::self-study.self-study",
+      "inversedBy": "assing_self_study_to_colleges"
+    },
+    "college": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::college.college"
+    }
+  }
+}

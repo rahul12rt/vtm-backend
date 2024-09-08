@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "chapters",
+  "info": {
+    "singularName": "chapter",
+    "pluralName": "chapters",
+    "displayName": "Chapter",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "unique": true
+    },
+    "subject": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::subject.subject"
+    },
+    "self_studies": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::self-study.self-study",
+      "mappedBy": "chapters"
+    },
+    "creat_dpps": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::creat-dpp.creat-dpp",
+      "mappedBy": "chapters"
+    },
+    "question_banks": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::question-bank.question-bank",
+      "mappedBy": "chapters"
+    },
+    "create_tests": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::create-test.create-test",
+      "mappedBy": "chapters"
+    }
+  }
+}

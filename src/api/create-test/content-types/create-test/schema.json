@@ -1,0 +1,55 @@
+{
+  "kind": "collectionType",
+  "collectionName": "create_tests",
+  "info": {
+    "singularName": "create-test",
+    "pluralName": "create-tests",
+    "displayName": "Create Test",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "duration": {
+      "type": "integer"
+    },
+    "question_banks": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::question-bank.question-bank",
+      "inversedBy": "create_tests"
+    },
+    "subject": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::subject.subject"
+    },
+    "chapters": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::chapter.chapter",
+      "inversedBy": "create_tests"
+    },
+    "topics": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::topic.topic",
+      "inversedBy": "create_tests"
+    },
+    "class": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::class.class"
+    },
+    "academic_year": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::academic-year.academic-year"
+    }
+  }
+}

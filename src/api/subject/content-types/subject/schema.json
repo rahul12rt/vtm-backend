@@ -4,7 +4,8 @@
   "info": {
     "singularName": "subject",
     "pluralName": "subjects",
-    "displayName": "Subject"
+    "displayName": "Subject",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -12,7 +13,14 @@
   "pluginOptions": {},
   "attributes": {
     "name": {
-      "type": "string"
+      "type": "string",
+      "unique": true
+    },
+    "map_faculty_to_subjects": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::map-faculty-to-subject.map-faculty-to-subject",
+      "inversedBy": "subjects"
     }
   }
 }

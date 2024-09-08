@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "assign_tests",
+  "info": {
+    "singularName": "assign-test",
+    "pluralName": "assign-tests",
+    "displayName": "Assign Test"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "create_test": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::create-test.create-test"
+    },
+    "Assign": {
+      "type": "boolean"
+    }
+  }
+}

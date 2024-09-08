@@ -1,0 +1,56 @@
+{
+  "kind": "collectionType",
+  "collectionName": "faculties",
+  "info": {
+    "singularName": "faculty",
+    "pluralName": "faculties",
+    "displayName": "Faculty",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "user_name": {
+      "type": "string",
+      "unique": true
+    },
+    "email": {
+      "type": "email"
+    },
+    "password": {
+      "type": "string"
+    },
+    "contact_number": {
+      "type": "string"
+    },
+    "subject": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::subject.subject"
+    },
+    "qualification": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::qualification.qualification"
+    },
+    "aadhar_number": {
+      "type": "string"
+    },
+    "pan_number": {
+      "type": "string"
+    },
+    "bank_account": {
+      "type": "string",
+      "unique": false,
+      "required": true
+    },
+    "ifsc_code": {
+      "type": "string"
+    }
+  }
+}

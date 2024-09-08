@@ -818,6 +818,200 @@ export interface ApiAcademicYearAcademicYear extends Schema.CollectionType {
   };
 }
 
+export interface ApiAssignDppToCollegeAssignDppToCollege
+  extends Schema.CollectionType {
+  collectionName: 'assign_dpp_to_colleges';
+  info: {
+    singularName: 'assign-dpp-to-college';
+    pluralName: 'assign-dpp-to-colleges';
+    displayName: 'Assign DPP to College';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    creat_dpps: Attribute.Relation<
+      'api::assign-dpp-to-college.assign-dpp-to-college',
+      'manyToMany',
+      'api::creat-dpp.creat-dpp'
+    >;
+    college: Attribute.Relation<
+      'api::assign-dpp-to-college.assign-dpp-to-college',
+      'oneToOne',
+      'api::college.college'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::assign-dpp-to-college.assign-dpp-to-college',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::assign-dpp-to-college.assign-dpp-to-college',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiAssignTestAssignTest extends Schema.CollectionType {
+  collectionName: 'assign_tests';
+  info: {
+    singularName: 'assign-test';
+    pluralName: 'assign-tests';
+    displayName: 'Assign Test';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    create_test: Attribute.Relation<
+      'api::assign-test.assign-test',
+      'oneToOne',
+      'api::create-test.create-test'
+    >;
+    Assign: Attribute.Boolean;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::assign-test.assign-test',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::assign-test.assign-test',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiAssingSelfStudyToCollegeAssingSelfStudyToCollege
+  extends Schema.CollectionType {
+  collectionName: 'assing_self_study_to_colleges';
+  info: {
+    singularName: 'assing-self-study-to-college';
+    pluralName: 'assing-self-study-to-colleges';
+    displayName: 'Assing Self study to College';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    self_studies: Attribute.Relation<
+      'api::assing-self-study-to-college.assing-self-study-to-college',
+      'manyToMany',
+      'api::self-study.self-study'
+    >;
+    college: Attribute.Relation<
+      'api::assing-self-study-to-college.assing-self-study-to-college',
+      'oneToOne',
+      'api::college.college'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::assing-self-study-to-college.assing-self-study-to-college',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::assing-self-study-to-college.assing-self-study-to-college',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiChapterChapter extends Schema.CollectionType {
+  collectionName: 'chapters';
+  info: {
+    singularName: 'chapter';
+    pluralName: 'chapters';
+    displayName: 'Chapter';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Unique;
+    subject: Attribute.Relation<
+      'api::chapter.chapter',
+      'oneToOne',
+      'api::subject.subject'
+    >;
+    self_studies: Attribute.Relation<
+      'api::chapter.chapter',
+      'manyToMany',
+      'api::self-study.self-study'
+    >;
+    creat_dpps: Attribute.Relation<
+      'api::chapter.chapter',
+      'manyToMany',
+      'api::creat-dpp.creat-dpp'
+    >;
+    question_banks: Attribute.Relation<
+      'api::chapter.chapter',
+      'manyToMany',
+      'api::question-bank.question-bank'
+    >;
+    create_tests: Attribute.Relation<
+      'api::chapter.chapter',
+      'manyToMany',
+      'api::create-test.create-test'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::chapter.chapter',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::chapter.chapter',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCityCity extends Schema.CollectionType {
+  collectionName: 'cities';
+  info: {
+    singularName: 'city';
+    pluralName: 'cities';
+    displayName: 'City';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::city.city', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::city.city', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface ApiClassClass extends Schema.CollectionType {
   collectionName: 'classes';
   info: {
@@ -854,12 +1048,31 @@ export interface ApiCollegeCollege extends Schema.CollectionType {
     singularName: 'college';
     pluralName: 'colleges';
     displayName: 'College';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     name: Attribute.String;
+    address: Attribute.String;
+    pincode: Attribute.Integer;
+    contact_person: Attribute.String;
+    contact_number: Attribute.String;
+    secoundary_number: Attribute.String;
+    email: Attribute.Email;
+    user_name: Attribute.String & Attribute.Unique;
+    password: Attribute.String;
+    city: Attribute.Relation<
+      'api::college.college',
+      'oneToOne',
+      'api::city.city'
+    >;
+    map_faculty_to_colleges: Attribute.Relation<
+      'api::college.college',
+      'manyToMany',
+      'api::map-faculty-to-college.map-faculty-to-college'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -871,6 +1084,407 @@ export interface ApiCollegeCollege extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::college.college',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCreatDppCreatDpp extends Schema.CollectionType {
+  collectionName: 'creat_dpps';
+  info: {
+    singularName: 'creat-dpp';
+    pluralName: 'creat-dpps';
+    displayName: 'Creat DPP';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    subject: Attribute.Relation<
+      'api::creat-dpp.creat-dpp',
+      'oneToOne',
+      'api::subject.subject'
+    >;
+    class: Attribute.Relation<
+      'api::creat-dpp.creat-dpp',
+      'oneToOne',
+      'api::class.class'
+    >;
+    chapters: Attribute.Relation<
+      'api::creat-dpp.creat-dpp',
+      'manyToMany',
+      'api::chapter.chapter'
+    >;
+    topics: Attribute.Relation<
+      'api::creat-dpp.creat-dpp',
+      'manyToMany',
+      'api::topic.topic'
+    >;
+    assign_dpp_to_colleges: Attribute.Relation<
+      'api::creat-dpp.creat-dpp',
+      'manyToMany',
+      'api::assign-dpp-to-college.assign-dpp-to-college'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::creat-dpp.creat-dpp',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::creat-dpp.creat-dpp',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCreateTestCreateTest extends Schema.CollectionType {
+  collectionName: 'create_tests';
+  info: {
+    singularName: 'create-test';
+    pluralName: 'create-tests';
+    displayName: 'Create Test';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    duration: Attribute.Integer;
+    question_banks: Attribute.Relation<
+      'api::create-test.create-test',
+      'manyToMany',
+      'api::question-bank.question-bank'
+    >;
+    subject: Attribute.Relation<
+      'api::create-test.create-test',
+      'oneToOne',
+      'api::subject.subject'
+    >;
+    chapters: Attribute.Relation<
+      'api::create-test.create-test',
+      'manyToMany',
+      'api::chapter.chapter'
+    >;
+    topics: Attribute.Relation<
+      'api::create-test.create-test',
+      'manyToMany',
+      'api::topic.topic'
+    >;
+    class: Attribute.Relation<
+      'api::create-test.create-test',
+      'oneToOne',
+      'api::class.class'
+    >;
+    academic_year: Attribute.Relation<
+      'api::create-test.create-test',
+      'oneToOne',
+      'api::academic-year.academic-year'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::create-test.create-test',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::create-test.create-test',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiFacultyFaculty extends Schema.CollectionType {
+  collectionName: 'faculties';
+  info: {
+    singularName: 'faculty';
+    pluralName: 'faculties';
+    displayName: 'Faculty';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    user_name: Attribute.String & Attribute.Unique;
+    email: Attribute.Email;
+    password: Attribute.String;
+    contact_number: Attribute.String;
+    subject: Attribute.Relation<
+      'api::faculty.faculty',
+      'oneToOne',
+      'api::subject.subject'
+    >;
+    qualification: Attribute.Relation<
+      'api::faculty.faculty',
+      'oneToOne',
+      'api::qualification.qualification'
+    >;
+    aadhar_number: Attribute.String;
+    pan_number: Attribute.String;
+    bank_account: Attribute.String & Attribute.Required;
+    ifsc_code: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::faculty.faculty',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::faculty.faculty',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiMapFacultyToCollegeMapFacultyToCollege
+  extends Schema.CollectionType {
+  collectionName: 'map_faculty_to_colleges';
+  info: {
+    singularName: 'map-faculty-to-college';
+    pluralName: 'map-faculty-to-colleges';
+    displayName: 'Map Faculty To College';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    faculty: Attribute.Relation<
+      'api::map-faculty-to-college.map-faculty-to-college',
+      'oneToOne',
+      'api::faculty.faculty'
+    >;
+    colleges: Attribute.Relation<
+      'api::map-faculty-to-college.map-faculty-to-college',
+      'manyToMany',
+      'api::college.college'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::map-faculty-to-college.map-faculty-to-college',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::map-faculty-to-college.map-faculty-to-college',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiMapFacultyToSubjectMapFacultyToSubject
+  extends Schema.CollectionType {
+  collectionName: 'map_faculty_to_subjects';
+  info: {
+    singularName: 'map-faculty-to-subject';
+    pluralName: 'map-faculty-to-subjects';
+    displayName: 'Map Faculty To Subject';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    faculty: Attribute.Relation<
+      'api::map-faculty-to-subject.map-faculty-to-subject',
+      'oneToOne',
+      'api::faculty.faculty'
+    >;
+    subjects: Attribute.Relation<
+      'api::map-faculty-to-subject.map-faculty-to-subject',
+      'manyToMany',
+      'api::subject.subject'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::map-faculty-to-subject.map-faculty-to-subject',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::map-faculty-to-subject.map-faculty-to-subject',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiQualificationQualification extends Schema.CollectionType {
+  collectionName: 'qualifications';
+  info: {
+    singularName: 'qualification';
+    pluralName: 'qualifications';
+    displayName: 'Qualification';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Unique;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::qualification.qualification',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::qualification.qualification',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiQuestionBankQuestionBank extends Schema.CollectionType {
+  collectionName: 'question_banks';
+  info: {
+    singularName: 'question-bank';
+    pluralName: 'question-banks';
+    displayName: 'Question Bank';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    subject: Attribute.Relation<
+      'api::question-bank.question-bank',
+      'oneToOne',
+      'api::subject.subject'
+    >;
+    chapters: Attribute.Relation<
+      'api::question-bank.question-bank',
+      'manyToMany',
+      'api::chapter.chapter'
+    >;
+    topics: Attribute.Relation<
+      'api::question-bank.question-bank',
+      'manyToMany',
+      'api::topic.topic'
+    >;
+    class: Attribute.Relation<
+      'api::question-bank.question-bank',
+      'oneToOne',
+      'api::class.class'
+    >;
+    academic_year: Attribute.Relation<
+      'api::question-bank.question-bank',
+      'oneToOne',
+      'api::academic-year.academic-year'
+    >;
+    question: Attribute.Text;
+    answer_1: Attribute.String;
+    answer_2: Attribute.String;
+    answer_3: Attribute.String;
+    answer_4: Attribute.String;
+    correct_answer: Attribute.String;
+    create_tests: Attribute.Relation<
+      'api::question-bank.question-bank',
+      'manyToMany',
+      'api::create-test.create-test'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::question-bank.question-bank',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::question-bank.question-bank',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiSelfStudySelfStudy extends Schema.CollectionType {
+  collectionName: 'self_studies';
+  info: {
+    singularName: 'self-study';
+    pluralName: 'self-studies';
+    displayName: 'Self Study';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    subject: Attribute.Relation<
+      'api::self-study.self-study',
+      'oneToOne',
+      'api::subject.subject'
+    >;
+    class: Attribute.Relation<
+      'api::self-study.self-study',
+      'oneToOne',
+      'api::class.class'
+    >;
+    chapters: Attribute.Relation<
+      'api::self-study.self-study',
+      'manyToMany',
+      'api::chapter.chapter'
+    >;
+    topics: Attribute.Relation<
+      'api::self-study.self-study',
+      'manyToMany',
+      'api::topic.topic'
+    >;
+    assing_self_study_to_colleges: Attribute.Relation<
+      'api::self-study.self-study',
+      'manyToMany',
+      'api::assing-self-study-to-college.assing-self-study-to-college'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::self-study.self-study',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::self-study.self-study',
       'oneToOne',
       'admin::user'
     > &
@@ -891,7 +1505,7 @@ export interface ApiStudentStudent extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String;
-    roll_number: Attribute.String;
+    roll_number: Attribute.String & Attribute.Unique;
     email: Attribute.String;
     user_name: Attribute.String;
     password: Attribute.Password;
@@ -932,12 +1546,18 @@ export interface ApiSubjectSubject extends Schema.CollectionType {
     singularName: 'subject';
     pluralName: 'subjects';
     displayName: 'Subject';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    name: Attribute.String;
+    name: Attribute.String & Attribute.Unique;
+    map_faculty_to_subjects: Attribute.Relation<
+      'api::subject.subject',
+      'manyToMany',
+      'api::map-faculty-to-subject.map-faculty-to-subject'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1047,12 +1667,38 @@ export interface ApiTopicTopic extends Schema.CollectionType {
     singularName: 'topic';
     pluralName: 'topics';
     displayName: 'Topic';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    name: Attribute.String;
+    name: Attribute.String & Attribute.Unique;
+    chapter: Attribute.Relation<
+      'api::topic.topic',
+      'oneToOne',
+      'api::chapter.chapter'
+    >;
+    self_studies: Attribute.Relation<
+      'api::topic.topic',
+      'manyToMany',
+      'api::self-study.self-study'
+    >;
+    creat_dpps: Attribute.Relation<
+      'api::topic.topic',
+      'manyToMany',
+      'api::creat-dpp.creat-dpp'
+    >;
+    question_banks: Attribute.Relation<
+      'api::topic.topic',
+      'manyToMany',
+      'api::question-bank.question-bank'
+    >;
+    create_tests: Attribute.Relation<
+      'api::topic.topic',
+      'manyToMany',
+      'api::create-test.create-test'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1090,8 +1736,21 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::academic-year.academic-year': ApiAcademicYearAcademicYear;
+      'api::assign-dpp-to-college.assign-dpp-to-college': ApiAssignDppToCollegeAssignDppToCollege;
+      'api::assign-test.assign-test': ApiAssignTestAssignTest;
+      'api::assing-self-study-to-college.assing-self-study-to-college': ApiAssingSelfStudyToCollegeAssingSelfStudyToCollege;
+      'api::chapter.chapter': ApiChapterChapter;
+      'api::city.city': ApiCityCity;
       'api::class.class': ApiClassClass;
       'api::college.college': ApiCollegeCollege;
+      'api::creat-dpp.creat-dpp': ApiCreatDppCreatDpp;
+      'api::create-test.create-test': ApiCreateTestCreateTest;
+      'api::faculty.faculty': ApiFacultyFaculty;
+      'api::map-faculty-to-college.map-faculty-to-college': ApiMapFacultyToCollegeMapFacultyToCollege;
+      'api::map-faculty-to-subject.map-faculty-to-subject': ApiMapFacultyToSubjectMapFacultyToSubject;
+      'api::qualification.qualification': ApiQualificationQualification;
+      'api::question-bank.question-bank': ApiQuestionBankQuestionBank;
+      'api::self-study.self-study': ApiSelfStudySelfStudy;
       'api::student.student': ApiStudentStudent;
       'api::subject.subject': ApiSubjectSubject;
       'api::test.test': ApiTestTest;

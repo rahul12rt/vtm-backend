@@ -16,7 +16,8 @@
       "type": "string"
     },
     "roll_number": {
-      "type": "string"
+      "type": "string",
+      "unique": true
     },
     "email": {
       "type": "string"

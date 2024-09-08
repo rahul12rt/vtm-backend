@@ -1,0 +1,47 @@
+{
+  "kind": "collectionType",
+  "collectionName": "self_studies",
+  "info": {
+    "singularName": "self-study",
+    "pluralName": "self-studies",
+    "displayName": "Self Study",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "subject": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::subject.subject"
+    },
+    "class": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::class.class"
+    },
+    "chapters": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::chapter.chapter",
+      "inversedBy": "self_studies"
+    },
+    "topics": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::topic.topic",
+      "inversedBy": "self_studies"
+    },
+    "assing_self_study_to_colleges": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::assing-self-study-to-college.assing-self-study-to-college",
+      "mappedBy": "self_studies"
+    }
+  }
+}

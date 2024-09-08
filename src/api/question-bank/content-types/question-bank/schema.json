@@ -1,0 +1,67 @@
+{
+  "kind": "collectionType",
+  "collectionName": "question_banks",
+  "info": {
+    "singularName": "question-bank",
+    "pluralName": "question-banks",
+    "displayName": "Question Bank",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "subject": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::subject.subject"
+    },
+    "chapters": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::chapter.chapter",
+      "inversedBy": "question_banks"
+    },
+    "topics": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::topic.topic",
+      "inversedBy": "question_banks"
+    },
+    "class": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::class.class"
+    },
+    "academic_year": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::academic-year.academic-year"
+    },
+    "question": {
+      "type": "text"
+    },
+    "answer_1": {
+      "type": "string"
+    },
+    "answer_2": {
+      "type": "string"
+    },
+    "answer_3": {
+      "type": "string"
+    },
+    "answer_4": {
+      "type": "string"
+    },
+    "correct_answer": {
+      "type": "string"
+    },
+    "create_tests": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::create-test.create-test",
+      "mappedBy": "question_banks"
+    }
+  }
+}

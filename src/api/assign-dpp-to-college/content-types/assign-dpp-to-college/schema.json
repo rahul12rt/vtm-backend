@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "assign_dpp_to_colleges",
+  "info": {
+    "singularName": "assign-dpp-to-college",
+    "pluralName": "assign-dpp-to-colleges",
+    "displayName": "Assign DPP to College"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "creat_dpps": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::creat-dpp.creat-dpp",
+      "inversedBy": "assign_dpp_to_colleges"
+    },
+    "college": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::college.college"
+    }
+  }
+}

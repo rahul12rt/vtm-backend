@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "creat_dpps",
+  "info": {
+    "singularName": "creat-dpp",
+    "pluralName": "creat-dpps",
+    "displayName": "Creat DPP"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "subject": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::subject.subject"
+    },
+    "class": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::class.class"
+    },
+    "chapters": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::chapter.chapter",
+      "inversedBy": "creat_dpps"
+    },
+    "topics": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::topic.topic",
+      "inversedBy": "creat_dpps"
+    },
+    "assign_dpp_to_colleges": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::assign-dpp-to-college.assign-dpp-to-college",
+      "mappedBy": "creat_dpps"
+    }
+  }
+}

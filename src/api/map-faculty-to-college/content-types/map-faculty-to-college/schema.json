@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "map_faculty_to_colleges",
+  "info": {
+    "singularName": "map-faculty-to-college",
+    "pluralName": "map-faculty-to-colleges",
+    "displayName": "Map Faculty To College",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "faculty": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::faculty.faculty"
+    },
+    "colleges": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::college.college",
+      "inversedBy": "map_faculty_to_colleges"
+    }
+  }
+}

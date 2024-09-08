@@ -4,7 +4,8 @@
   "info": {
     "singularName": "college",
     "pluralName": "colleges",
-    "displayName": "College"
+    "displayName": "College",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -13,6 +14,42 @@
   "attributes": {
     "name": {
       "type": "string"
+    },
+    "address": {
+      "type": "string"
+    },
+    "pincode": {
+      "type": "integer"
+    },
+    "contact_person": {
+      "type": "string"
+    },
+    "contact_number": {
+      "type": "string"
+    },
+    "secoundary_number": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "user_name": {
+      "type": "string",
+      "unique": true
+    },
+    "password": {
+      "type": "string"
+    },
+    "city": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::city.city"
+    },
+    "map_faculty_to_colleges": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::map-faculty-to-college.map-faculty-to-college",
+      "mappedBy": "colleges"
     }
   }
 }
