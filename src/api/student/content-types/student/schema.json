@@ -23,7 +23,8 @@
       "type": "string"
     },
     "user_name": {
-      "type": "string"
+      "type": "string",
+      "unique": true
     },
     "password": {
       "type": "password"

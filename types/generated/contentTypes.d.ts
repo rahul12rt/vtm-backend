@@ -1507,7 +1507,7 @@ export interface ApiStudentStudent extends Schema.CollectionType {
     name: Attribute.String;
     roll_number: Attribute.String & Attribute.Unique;
     email: Attribute.String;
-    user_name: Attribute.String;
+    user_name: Attribute.String & Attribute.Unique;
     password: Attribute.Password;
     college: Attribute.Relation<
       'api::student.student',
