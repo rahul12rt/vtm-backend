@@ -50,6 +50,12 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::academic-year.academic-year"
+    },
+    "date": {
+      "type": "date"
+    },
+    "exam_name": {
+      "type": "string"
     }
   }
 }

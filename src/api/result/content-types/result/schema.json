@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "results",
+  "info": {
+    "singularName": "result",
+    "pluralName": "results",
+    "displayName": "Result",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "create_test": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::create-test.create-test"
+    },
+    "student": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::student.student"
+    },
+    "total": {
+      "type": "integer"
+    },
+    "obtained": {
+      "type": "integer"
+    },
+    "test_info": {
+      "type": "json"
+    }
+  }
+}

@@ -1190,6 +1190,8 @@ export interface ApiCreateTestCreateTest extends Schema.CollectionType {
       'oneToOne',
       'api::academic-year.academic-year'
     >;
+    date: Attribute.Date;
+    exam_name: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1429,6 +1431,49 @@ export interface ApiQuestionBankQuestionBank extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::question-bank.question-bank',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiResultResult extends Schema.CollectionType {
+  collectionName: 'results';
+  info: {
+    singularName: 'result';
+    pluralName: 'results';
+    displayName: 'Result';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    create_test: Attribute.Relation<
+      'api::result.result',
+      'oneToOne',
+      'api::create-test.create-test'
+    >;
+    student: Attribute.Relation<
+      'api::result.result',
+      'oneToOne',
+      'api::student.student'
+    >;
+    total: Attribute.Integer;
+    obtained: Attribute.Integer;
+    test_info: Attribute.JSON;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::result.result',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::result.result',
       'oneToOne',
       'admin::user'
     > &
@@ -1750,6 +1795,7 @@ declare module '@strapi/types' {
       'api::map-faculty-to-subject.map-faculty-to-subject': ApiMapFacultyToSubjectMapFacultyToSubject;
       'api::qualification.qualification': ApiQualificationQualification;
       'api::question-bank.question-bank': ApiQuestionBankQuestionBank;
+      'api::result.result': ApiResultResult;
       'api::self-study.self-study': ApiSelfStudySelfStudy;
       'api::student.student': ApiStudentStudent;
       'api::subject.subject': ApiSubjectSubject;
