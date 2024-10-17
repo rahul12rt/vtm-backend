@@ -50,6 +50,12 @@
       "relation": "manyToMany",
       "target": "api::map-faculty-to-college.map-faculty-to-college",
       "mappedBy": "colleges"
+    },
+    "assign_tests": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::assign-test.assign-test",
+      "mappedBy": "colleges"
     }
   }
 }

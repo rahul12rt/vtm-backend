@@ -864,6 +864,7 @@ export interface ApiAssignTestAssignTest extends Schema.CollectionType {
     singularName: 'assign-test';
     pluralName: 'assign-tests';
     displayName: 'Assign Test';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -875,6 +876,11 @@ export interface ApiAssignTestAssignTest extends Schema.CollectionType {
       'api::create-test.create-test'
     >;
     Assign: Attribute.Boolean;
+    colleges: Attribute.Relation<
+      'api::assign-test.assign-test',
+      'manyToMany',
+      'api::college.college'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -971,6 +977,11 @@ export interface ApiChapterChapter extends Schema.CollectionType {
       'api::chapter.chapter',
       'manyToMany',
       'api::create-test.create-test'
+    >;
+    class: Attribute.Relation<
+      'api::chapter.chapter',
+      'oneToOne',
+      'api::class.class'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1072,6 +1083,11 @@ export interface ApiCollegeCollege extends Schema.CollectionType {
       'api::college.college',
       'manyToMany',
       'api::map-faculty-to-college.map-faculty-to-college'
+    >;
+    assign_tests: Attribute.Relation<
+      'api::college.college',
+      'manyToMany',
+      'api::assign-test.assign-test'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1259,6 +1275,36 @@ export interface ApiFacultyFaculty extends Schema.CollectionType {
   };
 }
 
+export interface ApiLevelLevel extends Schema.CollectionType {
+  collectionName: 'levels';
+  info: {
+    singularName: 'level';
+    pluralName: 'levels';
+    displayName: 'Level';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::level.level',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::level.level',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiMapFacultyToCollegeMapFacultyToCollege
   extends Schema.CollectionType {
   collectionName: 'map_faculty_to_colleges';
@@ -1420,6 +1466,11 @@ export interface ApiQuestionBankQuestionBank extends Schema.CollectionType {
       'manyToMany',
       'api::create-test.create-test'
     >;
+    level: Attribute.Relation<
+      'api::question-bank.question-bank',
+      'oneToOne',
+      'api::level.level'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1519,6 +1570,11 @@ export interface ApiSelfStudySelfStudy extends Schema.CollectionType {
       'manyToMany',
       'api::assing-self-study-to-college.assing-self-study-to-college'
     >;
+    academic_year: Attribute.Relation<
+      'api::self-study.self-study',
+      'oneToOne',
+      'api::academic-year.academic-year'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1530,6 +1586,36 @@ export interface ApiSelfStudySelfStudy extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::self-study.self-study',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiStreamStream extends Schema.CollectionType {
+  collectionName: 'streams';
+  info: {
+    singularName: 'stream';
+    pluralName: 'streams';
+    displayName: 'Stream';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::stream.stream',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::stream.stream',
       'oneToOne',
       'admin::user'
     > &
@@ -1567,6 +1653,11 @@ export interface ApiStudentStudent extends Schema.CollectionType {
     academic_year: Attribute.String;
     contact_number: Attribute.String;
     secoundary_number: Attribute.String;
+    stream: Attribute.Relation<
+      'api::student.student',
+      'oneToOne',
+      'api::stream.stream'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1791,12 +1882,14 @@ declare module '@strapi/types' {
       'api::creat-dpp.creat-dpp': ApiCreatDppCreatDpp;
       'api::create-test.create-test': ApiCreateTestCreateTest;
       'api::faculty.faculty': ApiFacultyFaculty;
+      'api::level.level': ApiLevelLevel;
       'api::map-faculty-to-college.map-faculty-to-college': ApiMapFacultyToCollegeMapFacultyToCollege;
       'api::map-faculty-to-subject.map-faculty-to-subject': ApiMapFacultyToSubjectMapFacultyToSubject;
       'api::qualification.qualification': ApiQualificationQualification;
       'api::question-bank.question-bank': ApiQuestionBankQuestionBank;
       'api::result.result': ApiResultResult;
       'api::self-study.self-study': ApiSelfStudySelfStudy;
+      'api::stream.stream': ApiStreamStream;
       'api::student.student': ApiStudentStudent;
       'api::subject.subject': ApiSubjectSubject;
       'api::test.test': ApiTestTest;

@@ -47,6 +47,11 @@
     },
     "secoundary_number": {
       "type": "string"
+    },
+    "stream": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::stream.stream"
     }
   }
 }

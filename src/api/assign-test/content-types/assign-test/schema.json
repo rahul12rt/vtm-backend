@@ -4,7 +4,8 @@
   "info": {
     "singularName": "assign-test",
     "pluralName": "assign-tests",
-    "displayName": "Assign Test"
+    "displayName": "Assign Test",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -18,6 +19,12 @@
     },
     "Assign": {
       "type": "boolean"
+    },
+    "colleges": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::college.college",
+      "inversedBy": "assign_tests"
     }
   }
 }

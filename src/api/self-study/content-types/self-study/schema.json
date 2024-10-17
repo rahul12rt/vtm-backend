@@ -42,6 +42,11 @@
       "relation": "manyToMany",
       "target": "api::assing-self-study-to-college.assing-self-study-to-college",
       "mappedBy": "self_studies"
+    },
+    "academic_year": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::academic-year.academic-year"
     }
   }
 }
