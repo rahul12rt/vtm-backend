@@ -978,11 +978,6 @@ export interface ApiChapterChapter extends Schema.CollectionType {
       'manyToMany',
       'api::create-test.create-test'
     >;
-    class: Attribute.Relation<
-      'api::chapter.chapter',
-      'oneToOne',
-      'api::class.class'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1471,6 +1466,11 @@ export interface ApiQuestionBankQuestionBank extends Schema.CollectionType {
       'oneToOne',
       'api::level.level'
     >;
+    stream: Attribute.Relation<
+      'api::question-bank.question-bank',
+      'oneToOne',
+      'api::stream.stream'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1575,6 +1575,7 @@ export interface ApiSelfStudySelfStudy extends Schema.CollectionType {
       'oneToOne',
       'api::academic-year.academic-year'
     >;
+    material: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1688,11 +1689,16 @@ export interface ApiSubjectSubject extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    name: Attribute.String & Attribute.Unique;
+    name: Attribute.String;
     map_faculty_to_subjects: Attribute.Relation<
       'api::subject.subject',
       'manyToMany',
       'api::map-faculty-to-subject.map-faculty-to-subject'
+    >;
+    class: Attribute.Relation<
+      'api::subject.subject',
+      'oneToOne',
+      'api::class.class'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;

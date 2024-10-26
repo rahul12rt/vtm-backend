@@ -21,7 +21,7 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::subject.subject",
-      "inversedBy": "map_faculty_to_subjects"
+      "mappedBy": "map_faculty_to_subjects"
     }
   }
 }

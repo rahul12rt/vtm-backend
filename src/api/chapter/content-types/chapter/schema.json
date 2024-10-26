@@ -44,11 +44,6 @@
       "relation": "manyToMany",
       "target": "api::create-test.create-test",
       "mappedBy": "chapters"
-    },
-    "class": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::class.class"
     }
   }
 }

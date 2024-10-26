@@ -47,6 +47,16 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::academic-year.academic-year"
+    },
+    "material": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }
