@@ -1108,6 +1108,7 @@ export interface ApiCreatDppCreatDpp extends Schema.CollectionType {
     singularName: 'creat-dpp';
     pluralName: 'creat-dpps';
     displayName: 'Creat DPP';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1139,6 +1140,12 @@ export interface ApiCreatDppCreatDpp extends Schema.CollectionType {
       'manyToMany',
       'api::assign-dpp-to-college.assign-dpp-to-college'
     >;
+    academic_year: Attribute.Relation<
+      'api::creat-dpp.creat-dpp',
+      'oneToOne',
+      'api::academic-year.academic-year'
+    >;
+    material: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

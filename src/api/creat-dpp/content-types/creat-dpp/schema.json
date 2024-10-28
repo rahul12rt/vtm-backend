@@ -4,7 +4,8 @@
   "info": {
     "singularName": "creat-dpp",
     "pluralName": "creat-dpps",
-    "displayName": "Creat DPP"
+    "displayName": "Creat DPP",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -41,6 +42,21 @@
       "relation": "manyToMany",
       "target": "api::assign-dpp-to-college.assign-dpp-to-college",
       "mappedBy": "creat_dpps"
+    },
+    "academic_year": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::academic-year.academic-year"
+    },
+    "material": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }
