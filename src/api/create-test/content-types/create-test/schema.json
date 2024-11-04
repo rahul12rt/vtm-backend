@@ -56,6 +56,11 @@
     },
     "exam_name": {
       "type": "string"
+    },
+    "exam_type": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::exam-type.exam-type"
     }
   }
 }

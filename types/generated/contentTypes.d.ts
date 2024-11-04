@@ -1210,6 +1210,11 @@ export interface ApiCreateTestCreateTest extends Schema.CollectionType {
     >;
     date: Attribute.Date;
     exam_name: Attribute.String;
+    exam_type: Attribute.Relation<
+      'api::create-test.create-test',
+      'oneToOne',
+      'api::exam-type.exam-type'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1221,6 +1226,36 @@ export interface ApiCreateTestCreateTest extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::create-test.create-test',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiExamTypeExamType extends Schema.CollectionType {
+  collectionName: 'exam_types';
+  info: {
+    singularName: 'exam-type';
+    pluralName: 'exam-types';
+    displayName: 'Exam Type';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    type: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::exam-type.exam-type',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::exam-type.exam-type',
       'oneToOne',
       'admin::user'
     > &
@@ -1894,6 +1929,7 @@ declare module '@strapi/types' {
       'api::college.college': ApiCollegeCollege;
       'api::creat-dpp.creat-dpp': ApiCreatDppCreatDpp;
       'api::create-test.create-test': ApiCreateTestCreateTest;
+      'api::exam-type.exam-type': ApiExamTypeExamType;
       'api::faculty.faculty': ApiFacultyFaculty;
       'api::level.level': ApiLevelLevel;
       'api::map-faculty-to-college.map-faculty-to-college': ApiMapFacultyToCollegeMapFacultyToCollege;

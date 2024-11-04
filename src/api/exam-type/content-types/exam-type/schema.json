@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "exam_types",
+  "info": {
+    "singularName": "exam-type",
+    "pluralName": "exam-types",
+    "displayName": "Exam Type"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "type": {
+      "type": "string"
+    }
+  }
+}
