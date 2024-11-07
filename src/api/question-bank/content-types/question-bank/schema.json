@@ -72,6 +72,9 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::stream.stream"
+    },
+    "answer_5": {
+      "type": "string"
     }
   }
 }

@@ -1513,6 +1513,7 @@ export interface ApiQuestionBankQuestionBank extends Schema.CollectionType {
       'oneToOne',
       'api::stream.stream'
     >;
+    answer_5: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
