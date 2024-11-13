@@ -1680,7 +1680,7 @@ export interface ApiStudentStudent extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String;
-    roll_number: Attribute.String & Attribute.Unique;
+    roll_number: Attribute.String;
     email: Attribute.String;
     user_name: Attribute.String & Attribute.Unique;
     password: Attribute.Password;
