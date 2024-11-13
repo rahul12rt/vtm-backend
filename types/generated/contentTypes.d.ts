@@ -1424,6 +1424,28 @@ export interface ApiMapFacultyToSubjectMapFacultyToSubject
   };
 }
 
+export interface ApiNoteNote extends Schema.CollectionType {
+  collectionName: 'notes';
+  info: {
+    singularName: 'note';
+    pluralName: 'notes';
+    displayName: 'note';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    text: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::note.note', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::note.note', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface ApiQualificationQualification extends Schema.CollectionType {
   collectionName: 'qualifications';
   info: {
@@ -1935,6 +1957,7 @@ declare module '@strapi/types' {
       'api::level.level': ApiLevelLevel;
       'api::map-faculty-to-college.map-faculty-to-college': ApiMapFacultyToCollegeMapFacultyToCollege;
       'api::map-faculty-to-subject.map-faculty-to-subject': ApiMapFacultyToSubjectMapFacultyToSubject;
+      'api::note.note': ApiNoteNote;
       'api::qualification.qualification': ApiQualificationQualification;
       'api::question-bank.question-bank': ApiQuestionBankQuestionBank;
       'api::result.result': ApiResultResult;
